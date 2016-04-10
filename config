@@ -1,0 +1,290 @@
+##======================================================================================
+##======================================================================================
+# i3 config file (v4)
+
+set $mod Mod4
+set $browser google-chrome-stable
+
+##======================================================================================
+##======================================================================================
+#Fonte
+
+font pango:Dejavu Sans Mono 8
+
+
+##======================================================================================
+##======================================================================================
+#Temas
+
+### THEME ###
+
+# class                 border  backgr. text    indicator
+client.focused          #000000 #eae9da #000000 #eae9da
+client.focused_inactive #000000 #5f676a #ffffff #5f676a
+client.unfocused        #000000 #30363b #888888 #30363b
+client.urgent           #000000 #9b6465 #ffffff #9b6465
+client.placeholder      #000000 #ffffff #ffffff #000000
+
+### Borders ###
+new_window pixel 4
+new_float pixel 4
+
+focus_follows_mouse yes
+
+##======================================================================================
+##======================================================================================
+
+# Use Mouse+$mod to drag floating windows to their wanted position
+floating_modifier $mod
+
+
+##======================================================================================
+##======================================================================================
+
+#3 Atalhos
+
+#Urxvt
+bindsym $mod+Return exec urxvt -T /bin/zsh
+
+#Aumentar e diminuir o volume
+bindsym XF86AudioRaiseVolume exec --no-startup-id amixer -q set 'Master' 5%+
+bindsym XF86AudioLowerVolume exec --no-startup-id amixer -q set 'Master' 5%-
+bindsym XF86AudioMute exec --no-startup-id amixer -q set Master toggle
+
+#Screenshot with the ThinkVantage button
+bindsym XF86Launch1  exec --no-startup-id scrot -z -t 20  %Y-%m-%d-%T.png -e 'mv $f ~/Pictures/screengrabs'
+#firefox
+bindsym $mod+shift+w exec --no-startup-id $browser
+
+##======================================================================================
+##======================================================================================
+
+## inicio automatico de aplicativos
+
+exec --no-startup-id sh ~/.i3/wallpaper.sh
+
+#desktop
+exec --no-startup-id sh ~/.fehbg &
+
+##START OF WIFI
+#Gnome Keyring
+exec --no-startup-id  eval $(/usr/bin/gnome-keyring-daemon --start --components=pkcs11,secrets,ssh)
+exec --no-startup-id export SSH_AUTH_SOCK
+
+#start nm-applet
+exec_always --no-startup-id nm-applet &
+##END OF WIFI
+
+# reduce insomnia
+redshift &
+
+
+##======================================================================================
+##======================================================================================
+
+# kill focused window
+bindsym $mod+Shift+q kill
+
+##======================================================================================
+##======================================================================================
+
+# start dmenu (a program launcher)
+
+
+bindsym $mod+d exec dmenu_run  -fn 'xft:DejavuSansMono:pixelsize=8' -nb '#191919' -nf '#9ac0cd' -sb '#191919' -sf '#bf3f34' -p 'Run:'
+
+##======================================================================================
+##======================================================================================
+
+
+# Janelas sem titulos
+new_window 1pixel
+new_float 1pixel
+
+##======================================================================================
+##======================================================================================
+# Change focus
+
+bindsym $mod+j focus left
+bindsym $mod+k focus down
+bindsym $mod+l focus up
+bindsym $mod+semicolon focus right
+
+
+##======================================================================================
+##======================================================================================
+
+# alternatively, you can use the cursor keys:
+bindsym $mod+Left focus left
+bindsym $mod+Down focus down
+bindsym $mod+Up focus up
+bindsym $mod+Right focus right
+
+##======================================================================================
+##======================================================================================
+
+# move focused window
+bindsym $mod+Shift+j move left
+bindsym $mod+Shift+k move down
+bindsym $mod+Shift+l move up
+bindsym $mod+Shift+semicolon move right
+
+##======================================================================================
+##======================================================================================
+
+# alternatively, you can use the cursor keys:
+bindsym $mod+Shift+Left move left
+bindsym $mod+Shift+Down move down
+bindsym $mod+Shift+Up move up
+bindsym $mod+Shift+Right move right
+
+##======================================================================================
+##======================================================================================
+
+# split in horizontal orientation
+bindsym $mod+h split h
+
+##======================================================================================
+##======================================================================================
+
+# split in vertical orientation
+bindsym $mod+v split v
+
+##======================================================================================
+##======================================================================================
+
+# enter fullscreen mode for the focused container
+bindsym $mod+f fullscreen
+
+##======================================================================================
+##======================================================================================
+
+# change container layout (stacked, tabbed, toggle split)
+bindsym $mod+s layout stacking
+bindsym $mod+w layout tabbed
+bindsym $mod+e layout toggle split
+
+##======================================================================================
+##======================================================================================
+
+# toggle tiling / floating
+bindsym $mod+Shift+space floating toggle
+
+##======================================================================================
+##======================================================================================
+
+# change focus between tiling / floating windows
+bindsym $mod+space focus mode_toggle
+
+##======================================================================================
+##======================================================================================
+
+# focus the parent container
+bindsym $mod+a focus parent
+
+##======================================================================================
+##======================================================================================
+
+# focus the child container
+#bindsym $mod+d focus child
+##======================================================================================
+##======================================================================================
+
+# switch to workspace
+bindsym $mod+1 workspace1  term
+bindsym $mod+2 workspace2  web
+bindsym $mod+3 workspace3  text
+bindsym $mod+4 workspace4  media
+bindsym $mod+5 workspace5  misc
+bindsym $mod+6 workspace6
+bindsym $mod+7 workspace7
+bindsym $mod+8 workspace8
+bindsym $mod+9 workspace9
+bindsym $mod+0 workspace10
+##======================================================================================
+##======================================================================================
+
+# move focused container to workspace
+bindsym $mod+Shift+1 move container to workspace1  term
+bindsym $mod+Shift+2 move container to workspace2  web
+bindsym $mod+Shift+3 move container to workspace3  text
+bindsym $mod+Shift+4 move container to workspace4  media
+bindsym $mod+Shift+5 move container to workspace5  misc
+bindsym $mod+Shift+6 move container to workspace6
+bindsym $mod+Shift+7 move container to workspace7
+bindsym $mod+Shift+8 move container to workspace8
+bindsym $mod+Shift+9 move container to workspace9
+bindsym $mod+Shift+0 move container to workspace10
+
+##======================================================================================
+##======================================================================================
+
+# reload the configuration file
+bindsym $mod+Shift+c reload
+
+##======================================================================================
+##======================================================================================
+
+# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
+bindsym $mod+Shift+r restart
+
+##======================================================================================
+##======================================================================================
+
+# power #
+
+set $mode_system Power: (l) lock, (e) logout, (s) suspend, (h) hibernate, (r) reboot, (Shift+s) shutdown
+mode "$mode_system" {
+    bindsym l exec --no-startup-id /home/$USER/.i3/i3exit lock, mode "default"
+    bindsym e exec --no-startup-id /home/$USER/.i3/i3exit logout, mode "default"
+    bindsym s exec --no-startup-id /home/$USER/.i3/i3exit suspend, mode "default"
+    bindsym h exec --no-startup-id /home/$USER/.i3/i3exit hibernate, mode "default"
+    bindsym r exec --no-startup-id /home/$USER/.i3/i3exit reboot, mode "default"
+    bindsym Shift+s exec --no-startup-id /home/$USER/.i3/i3exit shutdown, mode "default"
+    # back to normal: Enter or Escape
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+bindsym $mod+Pause mode "$mode_system"
+
+
+##======================================================================================
+##======================================================================================
+
+# resize window (you can also use the mouse for that)
+mode "resize" {
+        # These bindings trigger as soon as you enter the resize mode
+
+        # Pressing left will shrink the window’s width.
+        # Pressing right will grow the window’s width.
+        # Pressing up will shrink the window’s height.
+        # Pressing down will grow the window’s height.
+        bindsym j resize shrink width 10 px or 10 ppt
+        bindsym k resize grow height 10 px or 10 ppt
+        bindsym l resize shrink height 10 px or 10 ppt
+        bindsym semicolon resize grow width 10 px or 10 ppt
+
+        # same bindings, but for the arrow keys
+        bindsym Left resize shrink width 10 px or 10 ppt
+        bindsym Down resize grow height 10 px or 10 ppt
+        bindsym Up resize shrink height 10 px or 10 ppt
+        bindsym Right resize grow width 10 px or 10 ppt
+
+        # back to normal: Enter or Escape
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+}
+
+bindsym $mod+r mode "resize"
+
+##======================================================================================
+##======================================================================================
+#Barra
+
+
+bar {
+	status_command "i3blocks -c ~/.i3/blocks/config"
+}
+
+##======================================================================================
+##======================================================================================
