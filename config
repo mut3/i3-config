@@ -76,7 +76,7 @@ exec_always --no-startup-id nm-applet &
 ##END OF WIFI
 
 # reduce insomnia
-redshift &
+exec --no-startup-id redshift &
 
 
 ##======================================================================================
