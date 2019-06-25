@@ -10,21 +10,21 @@ separator=false
 separator_block_width=5
 
 [load]
-command=~/.i3/blocks/scripts/load_average
+command=~/.config/i3/blocks/scripts/load_average
 interval=1
 label=cpu:
 
 [separator]
 
 [disk]
-command=~/.i3/blocks/scripts/disk
+command=~/.config/i3/blocks/scripts/disk
 interval=1
 label=disk:
 
 [separator]
 
 [volume]
-command=~/.i3/blocks/scripts/volume
+command=~/.config/i3/blocks/scripts/volume
 label=vol:
 instance=Master
 #instance=PCM
@@ -34,7 +34,7 @@ signal=10
 [separator]
 
 [power]
-command=~/.i3/blocks/scripts/battery
+command=~/.config/i3/blocks/scripts/battery
 label=bat:
 interval=1
 
